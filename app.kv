@@ -1,0 +1,57 @@
+# Name: Sally Pang Shue Yan
+# Date: 14 Sep 2022
+# Brief Project Description:
+# This app is called SongsToLearnApp that stores and display the user's songs along with songs' details and songs' status.
+# With valid inputs, user is able to add new songs to the current songs file.
+# Additionally, user may choose to sort the songs by artist, title, year, and song's status.
+# Furthermore, when the user chooses to quit the application, it will automatically save the latest version of all songs in a csv file.
+# GitHub URL: https://github.com/JCUS-CP1404/assignment-2---songs-sallyshueyan
+
+
+BoxLayout:
+    orientation: 'horizontal'
+    BoxLayout:
+        orientation: 'vertical'
+        size_hint_x: 0.3
+        Label:
+            text: 'Sort by:'
+        Spinner:
+            id: sort_by_choice
+            text: app.current_choice
+            values: app.sort_choices
+            on_text: app.sort_songs(self.text.title())
+        Label:
+            size_hint_y: 2.0
+            text: 'Add New Song...'
+        Label:
+            text: 'Title:'
+        TextInput:
+            text: ''
+            id: new_song_title_input
+        Label:
+            text: 'Artist:'
+        TextInput:
+            text: ''
+            id: new_song_artist_input
+        Label:
+            text: 'Year:'
+        TextInput:
+            text: ''
+            id: new_song_year_input
+        Button:
+            text: 'Add Song'
+            on_press: app.add_new_song()
+        Button:
+            text: 'Clear'
+            on_press: app.clear_input()
+    BoxLayout:
+        orientation: 'vertical'
+        Label:
+            size_hint_y: 0.07
+            id: songs_status
+        BoxLayout:
+            orientation: 'vertical'
+            id: entries_box
+        Label:
+            size_hint_y: 0.1
+            id: output_label
